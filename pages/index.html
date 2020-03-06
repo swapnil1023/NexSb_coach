@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    
+    <title>Hello, world!</title>
+    <script>
+      $(document).ready(function(){
+        $("#mail").click(function(e){
+        event.preventDefault();
+        //document.getElementById("mailBtn").disable()
+        var emailId= document.getElementById("emailId").value;
+        var Subject= document.getElementById("emailSubject").value;
+        var Body= document.getElementById("emailBody").value;
+        //window.open("mailto:"+encodeURI(emailId)+"?subject="+encodeURI(Subject)+"&body="+encodeURI(Body));
+        var emailId= document.getElementById("emailId").value="";
+        var Subject= document.getElementById("emailSubject").value="";
+        var Body= document.getElementById("emailBody").value="";
+        })
+
+    })
+    </script>
+    <script>
+            // Test to see if the browser supports the HTML template element by checking
+      // for the presence of the template element's content attribute.
+      if ('content' in document.createElement('template')) {
+
+      // Instantiate the table with the existing HTML tbody
+      // and the row with the template
+      var template = document.getElementById('#productrow');
+
+      // Clone the new row and insert it into the table
+      var tbody = document.querySelector("#Content");
+      var clone = template.content.cloneNode(true);
+      var td = clone.querySelectorAll("td");
+      td[0].textContent = "1235646565";
+      td[1].textContent = "Stuff";
+
+      tbody.appendChild(clone);
+
+      // Clone the new row and insert it into the table
+      var clone2 = template.content.cloneNode(true);
+      td = clone2.querySelectorAll("td");
+      td[0].textContent = "0384928528";
+      td[1].textContent = "Acme Kidney Beans 2";
+
+      tbody.appendChild(clone2);
+
+      } else {
+      // Find another way to add the rows to the table because 
+      // the HTML template element is not supported.
+      }
+    </script>
+  </head>
+  <body>
+    <label for="Email">Email Address</label><br>
+    <input name="Email" id="emailId"><br>
+
+    <label for="subject">Subject</label><br>
+    <input name="subject" id="emailSubject"><br>
+    
+    <label for="body">Body</label><br>
+    <textarea name="body" id="emailBody"></textarea>
+
+    <button id="mail">Send mail</button>
+
+
+    <table id="producttable">
+      <thead>
+        <tr>
+          <td>UPC_Code</td>
+          <td>Product_Name</td>
+        </tr>
+      </thead>
+      <div id="Content">
+
+      </div>
+    </table>
+
+
+
+    <template id="productrow">
+      <tr>
+        <td class="record"></td>
+        <td></td>
+      </tr>
+    </template> 
+
+
+
+
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+  </body>
+</html>
