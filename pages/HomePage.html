@@ -9,10 +9,93 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
     <title>NexSB coach</title>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+
+    <script>
+      $(document).ready(function(){
+          
+          var loginButton = document.getElementById("loginBtn");
+          var cancelButton = document.getElementById("cancelBtn");
+          var login = document.getElementById("login");
+
+          loginButton.onclick = function openForm() {
+           
+            document.getElementById("myForm").style.display = "block";
+
+          }
+
+          cancelButton.onclick = function closeForm() {
+             document.getElementById("myForm").style.display = "none";
+          }
+          
+          login.onclick = function redirectDashboard(){
+                location.href='/pages/dashboard.html'
+            }
+
+      })
+  </script>
+
+  <style>
+      .form-popup {
+        display: none;
+        position: fixed;
+        bottom: 100px;
+        right: 550px;
+        z-index: 15;
+      }
+      .form-container {
+        max-width: 500px;
+        padding: 10px;
+        border-radius: 30px;
+        background-color: white;
+        border: solid;
+        border-color: orange;
+      }
+
+      /* Full-width input fields */
+      .form-container input[type=text], .form-container input[type=password] {
+        width: 100%;
+        padding: 15px;
+        margin: 5px 0 22px 0;
+        border: none; 
+        border-radius: 10px;
+        background: #f1f1f1;
+      }
+
+      /* When the inputs get focus, do something */
+      .form-container input[type=text]:focus, .form-container input[type=password]:focus {
+        background-color: #ddd;
+        outline: none;
+      }
+
+      /* Set a style for the submit/login button */
+      .form-container .btn {
+        color: orange;
+        padding: 16px 20px;
+        border: none;
+        cursor: pointer;
+        width: 100%;
+        margin-bottom:10px;
+      }
+
+      /* Add a red background color to the cancel button */
+      .form-container .cancel {
+        background-color: red;
+        color: black;
+        opacity: 0.8;
+      }
+
+      /* Add some hover effects to buttons */
+      .form-container .btn:hover, .open-button:hover {
+        opacity: 1;
+
+     </style>
+
   </head>
   <body>
     <div class="container"></div>
-      <div class="jumbotron" style="background-color:#e6e6e6; border-radius:30px">
+      <div class="jumbotron" style:"background-color:#e6e6e6; border-radius:30px">
         <div class="container">
           <div class="row" align="center">
             <div class="col" align="left">
@@ -24,17 +107,32 @@
           </div>
           <div class="row">
             <div class="col-12" align="end">
-              <button type="button" class="btn btn-dark "><font color="orange"><h6>login</h6></font></button>
+              <button type="button" class="btn btn-dark " id = "loginBtn"><font color="orange"><h6>login</h6></font></button>
             </div>
           </div>
         </div>
       </div>
     </div>
 
+    <div class="form-popup" id="myForm" >
+      <form action="/action_page.php" class="form-container">
+        <h1>Login</h1>
+    
+        <label for="email"><b>Email</b></label>
+        <input type="text" placeholder="Enter Email" name="email" required>
+    
+        <label for="psw"><b>Password</b></label>
+        <input type="password" placeholder="Enter Password" name="psw" required>
+    
+        <button class="btn btn-dark" id = "login" >Login</button>
+        <button type="submit" class="btn cancel" id = "cancelBtn">Close</button>
+      </form>
+    </div>
+
     <div class="container">
       <div class="row">
         <div class="col-md-3" align="center">
-          <div class="card text-white bg-dark mb-3 " style="max-width: 18rem; border-radius:25px">
+          <div class="card text-white bg-dark mb-3 " style:"max-width: 18rem; border-radius:25px">
             <div class="card-header"><font color="orange"><b>ABOUT</b></font></div>
             <div class="card-body">
               xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
