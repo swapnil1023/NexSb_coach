@@ -33,17 +33,14 @@ mysqli_close($conn);
 <html>
 <body>
     <div>
-        <?php
-            foreach($pizzas as $pizza)
-            {
-                echo $pizza["title"];
-            }            
-        ?>
-
+        <ul>
+            <?php foreach($pizzas as $pizza){ ?>
+            
+                <li><?php echo $pizza["title"];?></li>
+            <?php }?>            
+        
+        <ul>
     </div>
 
 </body>
-
-
-
 </html>
