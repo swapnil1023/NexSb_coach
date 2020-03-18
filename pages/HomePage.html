@@ -17,17 +17,18 @@
           
           var loginButton = document.getElementById("loginBtn");
           var cancelButton = document.getElementById("cancelBtn");
-          var login = document.getElementById("login");
+          var login = document.getElementById("login");         
 
-          // loginButton.onclick = function openForm() {
-           
-          //   document.getElementById("myForm").style.display = "block";
+          function formCheck() {
 
-          // }
+            if(document.getElementById("eId").value != "" && document.getElementById("pwd").value !="")
+              getElementById("login").disabled = false;
 
-          cancelButton.onclick = function closeForm() {
-             document.getElementById("myForm").style.display = "none";
           }
+          
+          document.getElementById("eId").onkeyup = formCheck();
+          document.getElementById("pwd").onkeyup = formCheck();
+
           
           login.onclick = function redirectDashboard(){
                 location.href='/pages/dashboard.html'
@@ -111,47 +112,50 @@
       </div>
     </div>
 
-    <div class="modal fade" id="loginModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-          <div class="modal-header" style="background-color: #1F211E; color: orange;">
-            <h5 class="modal-title" id="exampleModalCenterTitle">Login</h5>
-            <button type="button" class="close" data-dismiss="modal" style="color: orange;" aria-label="Close">
-             <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-
-            <div class="row">
-              <div class="col-3" style="align-items:right">
-                  <b>Email</b>
-              </div>
-              <div class="col-9">
-                  <div class="input-group input-group-sm mb-3">
-                      <input type="text" class="form-control" style="border-color: orange;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
-                  </div>
-              </div>
+      <div class="modal fade" id="loginModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header" style="background-color: #1F211E; color: orange;">
+              <h5 class="modal-title" id="exampleModalCenterTitle">Login</h5>
+              <button type="button" class="close" data-dismiss="modal" style="color: orange;" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+              </button>
             </div>
-            <div class="row">
-              <div class="col-3" style="align-items:right">
-                  <b>Password</b>
-              </div>
-              <div class="col-9">
-                  <div class="input-group input-group-sm mb-3">
-                      <input type="password" class="form-control" style="border-color: orange;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
+            <form name="loginForm">
+              <div class="modal-body">
+
+                <div class="row">
+                  <div class="col-3" style="align-items:right">
+                      <b>Email</b>
                   </div>
+                  <div class="col-9">
+                      <div class="input-group input-group-sm mb-3">
+                          <input type="text" class="form-control" style="border-color: orange;" id="eId" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
+                      </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-3" style="align-items:right">
+                      <b>Password</b>
+                  </div>
+                  <div class="col-9">
+                      <div class="input-group input-group-sm mb-3">
+                          <input type="password" class="form-control" style="border-color: orange;" id="pwd" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
+                      </div>
+                  </div>
+                </div>
+
               </div>
+            </form>
+            <div class="modal-footer">
+              <button class="btn btn-dark "  id = "login" disabled="disabled" >Login</button>
+              <button type="submit" class="btn btn-danger" data-dismiss="modal" id = "cancelBtn">Close</button>
+
             </div>
-
-          </div>
-          <div class="modal-footer">
-            <button class="btn btn-dark "  id = "login" >Login</button>
-            <button type="submit" class="btn btn-danger" data-dismiss="modal" id = "cancelBtn">Close</button>
-
           </div>
         </div>
       </div>
-    </div>
+    
 
     <div class="container">
       <div class="row">
