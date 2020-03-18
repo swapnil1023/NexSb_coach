@@ -17,22 +17,37 @@
           
           var loginButton = document.getElementById("loginBtn");
           var cancelButton = document.getElementById("cancelBtn");
-          var login = document.getElementById("login");         
+          var login = document.getElementById("login"); 
+          var email = document.getElementById("eId");
+          var password = document.getElementById("pwd");     
+            
 
           function formCheck() {
 
             if(document.getElementById("eId").value != "" && document.getElementById("pwd").value !="")
-              getElementById("login").disabled = false;
+              login.disabled = false;
+            else
+              login.disabled = true;
 
           }
           
-          document.getElementById("eId").onkeyup = formCheck();
-          document.getElementById("pwd").onkeyup = formCheck();
-
-          
-          login.onclick = function redirectDashboard(){
+          function redirectDashboard(){
                 location.href='dashboard.html'
             }
+          
+          login.onclick = function onclick()
+          {
+            redirectDashboard();
+          }
+
+          email.onkeyup = function onclick()
+          {
+            formCheck();
+          }
+          password.onkeyup = function onclick()
+          {
+            formCheck();
+          }
 
       })
   </script>
@@ -144,7 +159,7 @@
                 </div>
               </div>
               <div class="modal-footer">
-              <button class="btn btn-dark" type="submit"  id = "login" >Login</button>
+              <button class="btn btn-dark" type="submit"  id = "login" disabled>Login</button>
               <button class="btn btn-danger" data-dismiss="modal" id = "cancelBtn">Close</button>
 
               </div>
@@ -153,7 +168,7 @@
           
         </div>
       </div>
-    
+    </div>
 
     <div class="container">
       <div class="row">
