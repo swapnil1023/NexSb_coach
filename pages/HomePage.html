@@ -17,24 +17,39 @@
           
           var loginButton = document.getElementById("loginBtn");
           var cancelButton = document.getElementById("cancelBtn");
-          var login = document.getElementById("login");
+          var login = document.getElementById("login"); 
+          var email = document.getElementById("eId");
+          var password = document.getElementById("pwd");     
+            
 
-          // loginButton.onclick = function openForm() {
-           
-          //   document.getElementById("myForm").style.display = "block";
+          function formCheck() {
 
-          // }
+            if(document.getElementById("eId").value != "" && document.getElementById("pwd").value !="")
+              login.disabled = false;
+            else
+              login.disabled = true;
 
-          cancelButton.onclick = function closeForm() {
-             document.getElementById("myForm").style.display = "none";
           }
           
-          login.onclick = function redirectDashboard(){
-                location.href='/pages/dashboard.html'
+          function redirectDashboard(){
+                location.href='dashboard.html'
             }
+          
+          login.onclick = function onclick()
+          {
+            redirectDashboard();
+          }
+
+          email.onkeyup = function onclick()
+          {
+            formCheck();
+          }
+          password.onkeyup = function onclick()
+          {
+            formCheck();
+          }
 
       })
-      
   </script>
 
   <style>
@@ -94,7 +109,7 @@
 
   </head>
   <body>
-      <div class="jumbotron" style= "background-color: #e6e6e6 ; border-radius:15px">
+      <div class="jumbotron" style="background-color:#e6e6e6; border-radius:15px">
         <div class="container">
           <div class="row" align="center">
             <div class="col" align="left">
@@ -129,7 +144,7 @@
                 </div>
                 <div class="col-9">
                     <div class="input-group input-group-sm mb-3">
-                        <input type="text" class="form-control" style="border-color: orange;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
+                        <input type="text" class="form-control" style="border-color: orange;" id="eId" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
                     </div>
                 </div>
               </div>
@@ -139,12 +154,12 @@
                 </div>
                 <div class="col-9">
                     <div class="input-group input-group-sm mb-3">
-                        <input type="password" class="form-control" style="border-color: orange;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
+                        <input type="password" class="form-control" style="border-color: orange;" id="pwd" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
                     </div>
                 </div>
               </div>
               <div class="modal-footer">
-              <button class="btn btn-dark" type="submit"  id = "login" >Login</button>
+              <button class="btn btn-dark" type="submit"  id = "login" disabled>Login</button>
               <button class="btn btn-danger" data-dismiss="modal" id = "cancelBtn">Close</button>
 
               </div>
