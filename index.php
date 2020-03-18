@@ -13,7 +13,6 @@ if(!$conn)
 //query to get all pizza from pizzas table
 $sql = "SELECT title,ingredients FROM pizzas ORDER BY created_at";
 
-
 //make qeury and get result
 $result = mysqli_query($conn, $sql);
 

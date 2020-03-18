@@ -7,9 +7,24 @@ $conn = mysqli_connect("localhost","pradyuman","pradyuman","nexsb_coach");
 if(!$conn){
     echo "Connection failed". mysqli_connect_error();
 }
-else{
-    echo "Connection Success";
-}
+
+$sql = "SELECT * from colleges";
+//query to get all pizza from pizzas table
+
+//make qeury and get result
+$result = mysqli_query($conn, $sql);
+
+//fetch the rows as an array;
+$colleges= mysqli_fetch_all($result,MYSQLI_ASSOC);
+
+print_r($colleges);
+
+//free result from memory
+mysqli_free_result($result);
+//close connection
+mysqli_close($conn);
+
+
 
 ?>
 <!doctype html>
