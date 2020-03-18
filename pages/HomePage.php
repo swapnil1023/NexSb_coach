@@ -40,6 +40,9 @@ else{
              document.getElementById("myForm").style.display = "none";
           }
           
+          login.onclick = function redirectDashboard(){
+                location.href='dashboard.html'
+            }
        
 
       })
@@ -152,7 +155,7 @@ else{
                 </div>
               </div>
               <div class="modal-footer">
-              <a href="./dashboard.html"><button class="btn btn-dark" type="submit"  id = "login" >Login</button></a>
+              <button class="btn btn-dark" type="submit"  id = "login" >Login</button>
               <button class="btn btn-danger" data-dismiss="modal" id = "cancelBtn">Close</button>
 
               </div>
