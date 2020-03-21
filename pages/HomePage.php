@@ -58,10 +58,10 @@ mysqli_close($conn);
           }
           
           function redirectDashboard(){
-                location.href='dashboard.html'
+                location.href='./dashboard.html'
             }
           
-          login.onclick = function onclick()
+          login.onClick = function onclick()
           {
             redirectDashboard();
           }
@@ -164,9 +164,7 @@ mysqli_close($conn);
           </div>
           <div class="modal-body">
 
-            <form onSubmit = ()=>
-              {redirectDashboard()}
-            >
+            <form   action="./dashboard.php" method="get">
               <div class="row">
                 <div class="col-3" style="align-items:right">
                     <b>Email</b>
@@ -188,7 +186,7 @@ mysqli_close($conn);
                 </div>
               </div>
               <div class="modal-footer">
-              <button class="btn btn-dark" type="submit"  id = "login" disabled>Login</button>
+              <button class="btn btn-dark" id = "login" disabled>Login</button>
               <button class="btn btn-danger" data-dismiss="modal" id = "cancelBtn">Close</button>
             </form>
 
