@@ -2,7 +2,7 @@
 
 //connect to database
 
-$conn = mysqli_connect("localhost","pradyuman","pradyuman","pizza");
+$conn = mysqli_connect("localhost","pradyuman","pradyuman","nexsb_coach");
 
 //check the database connection
 if(!$conn)
