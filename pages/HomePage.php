@@ -24,8 +24,6 @@ mysqli_free_result($result);
 //close connection
 mysqli_close($conn);
 
-
-
 ?>
 <!doctype html>
 <html lang="en">
@@ -40,25 +38,43 @@ mysqli_close($conn);
     <title>NexSB coach</title>
 
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+
     <script>
       $(document).ready(function(){
           
           var loginButton = document.getElementById("loginBtn");
           var cancelButton = document.getElementById("cancelBtn");
-          var login = document.getElementById("login");
+          var login = document.getElementById("login"); 
+          var email = document.getElementById("eId");
+          var password = document.getElementById("pwd");     
+            
 
-          // loginButton.onclick = function openForm() {
-          //   document.getElementById("myForm").style.display = "block";
-          // }
+          function formCheck() {
 
-          cancelButton.onclick = function closeForm() {
-             document.getElementById("myForm").style.display = "none";
+            if(document.getElementById("eId").value != "" && document.getElementById("pwd").value !="")
+              login.disabled = false;
+            else
+              login.disabled = true;
+
           }
           
-          login.onclick = function redirectDashboard(){
-                location.href='dashboard.html'
+          function redirectDashboard(){
+                location.href='dashboard.php'
             }
-       
+          
+          login.onclick = function onclick()
+          {
+            redirectDashboard();
+          }
+
+          email.onkeyup = function onclick()
+          {
+            formCheck();
+          }
+          password.onkeyup = function onclick()
+          {
+            formCheck();
+          }
 
       })
   </script>
@@ -148,14 +164,14 @@ mysqli_close($conn);
             </button>
           </div>
           <div class="modal-body">
-            
+            <form>
               <div class="row">
                 <div class="col-3" style="align-items:right">
                     <b>Email</b>
                 </div>
                 <div class="col-9">
                     <div class="input-group input-group-sm mb-3">
-                        <input type="text" class="form-control" style="border-color: orange;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
+                        <input type="text" class="form-control" style="border-color: orange;" id="eId" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
                     </div>
                 </div>
               </div>
@@ -165,14 +181,14 @@ mysqli_close($conn);
                 </div>
                 <div class="col-9">
                     <div class="input-group input-group-sm mb-3">
-                        <input type="password" class="form-control" style="border-color: orange;" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
+                        <input type="password" class="form-control" style="border-color: orange;" id="pwd" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
                     </div>
                 </div>
               </div>
               <div class="modal-footer">
-              <button class="btn btn-dark" type="submit"  id = "login" >Login</button>
+              <button class="btn btn-dark" type="submit"  id = "login" disabled>Login</button>
               <button class="btn btn-danger" data-dismiss="modal" id = "cancelBtn">Close</button>
-
+              </form>
               </div>
          
           </div>
