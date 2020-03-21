@@ -58,7 +58,7 @@ mysqli_close($conn);
           }
           
           function redirectDashboard(){
-                location.href='dashboard.php'
+                location.href='dashboard.html'
             }
           
           login.onclick = function onclick()
@@ -163,7 +163,10 @@ mysqli_close($conn);
             </button>
           </div>
           <div class="modal-body">
-            <form>
+
+            <form onSubmit = ()=>
+              {redirectDashboard()}
+            >
               <div class="row">
                 <div class="col-3" style="align-items:right">
                     <b>Email</b>
@@ -187,8 +190,9 @@ mysqli_close($conn);
               <div class="modal-footer">
               <button class="btn btn-dark" type="submit"  id = "login" disabled>Login</button>
               <button class="btn btn-danger" data-dismiss="modal" id = "cancelBtn">Close</button>
-              </form>
-              </div>
+            </form>
+
+          </div>
          
           </div>
           
@@ -232,6 +236,9 @@ mysqli_close($conn);
         </div>
       </div>
     </div>
+    <?php 
+    include "./template/footer.php";
+    ?>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -240,6 +247,4 @@ mysqli_close($conn);
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
   </body>
 </html>
-<?php 
-  include "./template/footer.php";
-?>
+

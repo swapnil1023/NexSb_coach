@@ -57,7 +57,7 @@
             var homeButton = document.getElementById("homeBtn");
             //homeButton.onclick="location.href='/pages/HomePage.html'" //Even this works properly
             homeButton.onclick=function redirectHome(){
-                location.href='/pages/HomePage.php'
+                location.href='./HomePage.php'
             }
 
         })
