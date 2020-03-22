@@ -1,5 +1,12 @@
 <?php 
-
+	//require "loginCheck.php";
+	session_start();
+    if( $_SESSION["loggedIn"] != 1)
+    {
+		session_destroy();
+        header("Location:HomePage.php");
+        exit();
+    }
 ?>
 
 <!doctype html>

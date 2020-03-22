@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 //connect to database
 $conn = mysqli_connect("localhost","pradyuman","pradyuman","nexsb_coach");
 
@@ -9,19 +9,46 @@ if(!$conn){
 }
 
 $sql = "SELECT * from colleges";
-
 //make qeury and get result
 $result = mysqli_query($conn, $sql);
 
 //fetch the rows as an array;
 $colleges= mysqli_fetch_all($result,MYSQLI_ASSOC);
 
-print_r($colleges);
+$error='';
+
+if(isset($_POST["login"]))
+    {
+		
+        $enteredEmail = $_POST['eId'];
+		$enteredPassword = $_POST['pwd'];
+		$email = "SELECT * from emails where email = '$enteredEmail' AND password = '$enteredPassword'";
+		$emails_query = mysqli_query($conn, $email);
+		$email_data = mysqli_num_rows($emails_query);
+		$roes= mysqli_fetch_all($emails_query,MYSQLI_ASSOC);
+
+		if($email_data == 1)
+		{
+			$_SESSION["email"] = $enteredEmail;
+			$_SESSION["loggedIn"] = 1;
+			header("Location:dashboard.php");
+			exit(); 
+		}
+		else
+		{
+			echo '<script type="text/javascript">';
+			echo ' alert("Incorrect Login details")'; 
+			echo '</script>';
+		}
+			
+    }
 
 //free result from memory
 mysqli_free_result($result);
 //close connection
 mysqli_close($conn);
+
+
 
 ?>
 <!doctype html>
@@ -46,14 +73,15 @@ mysqli_close($conn);
 					var login = document.getElementById("login");
 					var email = document.getElementById("eId");
 					var password = document.getElementById("pwd");
+         			//login.disabled = false;
 
 
 					function formCheck() {
 
-						if(document.getElementById("eId").value != "" && document.getElementById("pwd").value !="")
-							login.disabled = false;
-						else
-							login.disabled = true;
+						if(document.getElementById("eId").value != "" && document.getElementById("pwd").value !="");
+							//login.disabled = false;
+						else;
+							//login.disabled = true;
 
 					}
 
@@ -61,10 +89,7 @@ mysqli_close($conn);
 								location.href='./dashboard.html'
 						}
 
-					login.onClick = function onclick()
-					{
-						redirectDashboard();
-					}
+					
 
 					email.onkeyup = function onclick()
 					{
@@ -73,6 +98,11 @@ mysqli_close($conn);
 					password.onkeyup = function onclick()
 					{
 						formCheck();
+					}
+
+          			login.onClick = function onclick()
+					{
+						//redirectDashboard();
 					}
 
 			})
@@ -164,14 +194,14 @@ mysqli_close($conn);
 					</div>
 					<div class="modal-body">
 
-						<form action="./dashboard.php" method="get">
+						<form action=""  method="post">
 							<div class="row">
 								<div class="col-3" style="align-items:right">
 										<b>Email</b>
 								</div>
 								<div class="col-9">
 										<div class="input-group input-group-sm mb-3">
-												<input type="text" class="form-control" style="border-color: orange;" id="eId" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
+												<input type="text" class="form-control" style="border-color: orange;" name="eId" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
 										</div>
 								</div>
 							</div>
@@ -181,15 +211,14 @@ mysqli_close($conn);
 								</div>
 								<div class="col-9">
 										<div class="input-group input-group-sm mb-3">
-												<input type="password" class="form-control" style="border-color: orange;" id="pwd" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
+												<input type="password" class="form-control" style="border-color: orange;" name="pwd" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" required>
 										</div>
 								</div>
 							</div>
 							<div class="modal-footer">
-							<button class="btn btn-dark" id = "login" disabled>Login</button>
+							<button class="btn btn-dark" type="submit" name = "login" >Login</button>
 							<button class="btn btn-danger" data-dismiss="modal" id = "cancelBtn">Close</button>
 						</form>
-
 					</div>
 
 					</div>
@@ -197,7 +226,7 @@ mysqli_close($conn);
 				</div>
 			</div>
 		</div>
-
+		<span><?php echo $error; ?></span>
 		<div class="container">
 			<div class="row">
 				<div class="col-md-3" align="center">
