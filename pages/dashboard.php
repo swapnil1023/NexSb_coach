@@ -6,7 +6,22 @@
 		session_destroy();
         header("Location:HomePage.php");
         exit();
-    }
+	}
+	
+	//connect to database
+	$conn = mysqli_connect("localhost","pradyuman","pradyuman","nexsb_coach");
+
+	//if connection fails
+	if(!$conn){
+			echo "Connection failed". mysqli_connect_error();
+	}
+
+	$sql = "SELECT * from colleges";
+	//make qeury and get result
+	$result = mysqli_query($conn, $sql);
+
+	//fetch the rows as an array;
+	$colleges= mysqli_fetch_all($result,MYSQLI_ASSOC);
 ?>
 
 <!doctype html>
@@ -34,6 +49,7 @@
 			var teams = document.getElementById("teams");
 			var sports = document.getElementById("sports");
 			var help = document.getElementById("help");
+			var sendInvite = document.getElementById("sendInvite");
 
 			teamsButton.onclick = function dispTeam (){
 				teams.style.display = "inline-block";
@@ -123,14 +139,33 @@
 				<div id="teams">
 					
 					<div id="all teams">
-						<div class="row" style="display : none">
-								<div class="card" style="width:800px; height: 350px; border-radius: 25px; border-color:orange; padding:10px; background-color:#e6e6e6">
-									fvghbadsfdghjkl;dffhfdnfgg
+						<div class="row">
+							<div class="card" style="width:800px; height: 350px; border-radius: 25px; border-color:orange; padding:10px; background-color:#e6e6e6">
+								<div class="overflow-auto" style="margin-top:40px">
+									<div class="row">
+									<?php foreach ($colleges as $college){ ?>
+										
+										<div class="col-4 ">
+											<div class="card border-warning mb-3" style="max-width: 18rem;">
+												<div class="card-body text-warning">
+													<h5 class="card-text">
+														<?php 
+															echo htmlspecialchars($college['CollegeName']);
+														?>
+													</h5>
+												</div>
+											</div>
+										</div>
+
+									<?php } ?>
+									</div>
 								</div>
+							</div>
+
 						</div>
 					</div>     
 
-					<div id="sendInvite">
+					<div id="sendInvite" style="display:none;">
 						<div class="row">
 							<div class="card" style="width:800px; height: 350px; border-radius: 25px; border-color:orange; padding:10px; background-color:#e6e6e6">
 								<div class="container" style="margin-top:40px">
