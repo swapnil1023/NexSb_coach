@@ -49,7 +49,10 @@
 			var teams = document.getElementById("teams");
 			var sports = document.getElementById("sports");
 			var help = document.getElementById("help");
-			var sendInvite = document.getElementById("sendInvite");
+			var sendInviteDiv = document.getElementById("sendInviteDiv");
+			var sendInviteButton = document.getElementById("sendInviteButton");
+			var allTeamsDiv = document.getElementById("allTeamsDiv");
+			var backAllTeams = document.getElementById("backAllTeams");
 
 			teamsButton.onclick = function dispTeam (){
 				teams.style.display = "inline-block";
@@ -75,6 +78,15 @@
 				teamsButton.disable=false;
 				sportsButton.disable=false;
 				helpButton.disable=true;
+			}
+
+			sendInviteButton.onclick = function dispSendInvite (){
+				allTeamsDiv.style.display = "none";
+				sendInviteDiv.style.display = "inline-block";
+			} 
+			backAllTeams.onclick = function dispAllTeams (){
+				allTeamsDiv.style.display = "inline-block";
+				sendInviteDiv.style.display = "none";
 			}
 		   
 			var homeButton = document.getElementById("homeBtn");
@@ -135,39 +147,42 @@
 					</div>
 			</div>
 			<div class="col-9">
-				
-				<div id="teams">
-					
-					<div id="all teams">
-						<div class="row">
-							<div class="card" style="width:800px; height: 350px; border-radius: 25px; border-color:orange; padding:10px; background-color:#e6e6e6">
+				<div class="card" style="width:800px; height: 350px; border-radius: 25px; border-color:orange; padding:10px; background-color:#e6e6e6">
+		
+					<div class = "container" id="teams">
+						
+						<div class = "container" id="allTeamsDiv">
+							<div class="row">
 								<div class="overflow-auto" style="margin-top:40px">
 									<div class="row">
-									<?php foreach ($colleges as $college){ ?>
-										
-										<div class="col-4 ">
-											<div class="card border-warning mb-3" style="max-width: 18rem;">
-												<div class="card-body text-warning">
-													<h5 class="card-text">
-														<?php 
-															echo htmlspecialchars($college['CollegeName']);
-														?>
-													</h5>
+										<?php foreach ($colleges as $college){ ?>
+											
+											<div class="col-4 com-sm-12">
+												<div class="card border-warning mb-3" style="max-width: 18rem;">
+													<div class="card-body">
+														<h5 class="card-text">
+															<?php 
+																echo htmlspecialchars($college['CollegeName']);
+															?>
+														</h5>
+													</div>
 												</div>
 											</div>
-										</div>
 
-									<?php } ?>
+										<?php } ?>
 									</div>
 								</div>
+
 							</div>
+							<div class="footer">
+								<button type="button" id = "sendInviteButton">
+									sendInvite
+								</button>
+							</div>
+						</div>     
 
-						</div>
-					</div>     
-
-					<div id="sendInvite" style="display:none;">
-						<div class="row">
-							<div class="card" style="width:800px; height: 350px; border-radius: 25px; border-color:orange; padding:10px; background-color:#e6e6e6">
+						<div class="container" id="sendInviteDiv" style="display:none;">
+							<div class="row">
 								<div class="container" style="margin-top:40px">
 									<div class="row">
 										<div class="col-3" style="align-items:right">
@@ -204,25 +219,29 @@
 											<button type="button" class="btn btn-dark " style="margin:10px; width: 100px;"><b>SUBMIT</b></button>
 										</div>
 									</div>
+									<div class="row">
+										<div class="col" align="center">
+											<button type="button" id="backAllTeams" class="btn btn-dark " style="margin:10px; width: 100px;"><b>BACK</b></button>
+										</div>
+									</div>
 								</div>
 							</div>
 						</div>
+
 					</div>
 
+					<div id = "sports" style="display:none;">
+
+						sports
+
+					</div>
+
+					<div id = "help" style="display:none;">
+
+						help
+
+					</div>
 				</div>
-
-				<div div class="card" style="width:800px; height: 350px; border-radius: 25px; border-color:orange; padding:10px; background-color:#e6e6e6; display:none" id = "sports">
-
-					sports
-
-				</div>
-
-				<div div class="card" style="width:800px; height: 350px; border-radius: 25px; border-color:orange; padding:10px; background-color:#e6e6e6; display:none" id = "help">
-
-					help
-
-				</div>
-
 			</div>
 		</div>
 	</div>
