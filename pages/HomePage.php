@@ -1,52 +1,52 @@
 <?php
-session_start();
-//connect to database
-$conn = mysqli_connect("localhost","pradyuman","pradyuman","nexsb_coach");
+	session_start();
+	//connect to database
+	$conn = mysqli_connect("localhost","pradyuman","pradyuman","nexsb_coach");
 
-//if connection fails
-if(!$conn){
-		echo "Connection failed". mysqli_connect_error();
-}
+	//if connection fails
+	if(!$conn){
+			echo "Connection failed". mysqli_connect_error();
+	}
 
-$sql = "SELECT * from colleges";
-//make qeury and get result
-$result = mysqli_query($conn, $sql);
+	$sql = "SELECT * from colleges";
+	//make qeury and get result
+	$result = mysqli_query($conn, $sql);
 
-//fetch the rows as an array;
-$colleges= mysqli_fetch_all($result,MYSQLI_ASSOC);
+	//fetch the rows as an array;
+	$colleges= mysqli_fetch_all($result,MYSQLI_ASSOC);
 
-$error='';
+	$error='';
 
-if(isset($_POST["login"]))
-    {
-		
-        $enteredEmail = $_POST['eId'];
-		$enteredPassword = $_POST['pwd'];
-		$email = "SELECT * from emails where email = '$enteredEmail' AND password = '$enteredPassword'";
-		$emails_query = mysqli_query($conn, $email);
-		$email_data = mysqli_num_rows($emails_query);
-		$roes= mysqli_fetch_all($emails_query,MYSQLI_ASSOC);
-
-		if($email_data == 1)
+	if(isset($_POST["login"]))
 		{
-			$_SESSION["email"] = $enteredEmail;
-			$_SESSION["loggedIn"] = 1;
-			header("Location:dashboard.php");
-			exit(); 
-		}
-		else
-		{
-			echo '<script type="text/javascript">';
-			echo ' alert("Incorrect Login details")'; 
-			echo '</script>';
-		}
 			
-    }
+			$enteredEmail = $_POST['eId'];
+			$enteredPassword = $_POST['pwd'];
+			$email = "SELECT * from emails where email = '$enteredEmail' AND password = '$enteredPassword'";
+			$emails_query = mysqli_query($conn, $email);
+			$email_data = mysqli_num_rows($emails_query);
+			$roes= mysqli_fetch_all($emails_query,MYSQLI_ASSOC);
 
-//free result from memory
-mysqli_free_result($result);
-//close connection
-mysqli_close($conn);
+			if($email_data == 1)
+			{
+				$_SESSION["email"] = $enteredEmail;
+				$_SESSION["loggedIn"] = 1;
+				header("Location:dashboard.php");
+				exit(); 
+			}
+			else
+			{
+				echo '<script type="text/javascript">';
+				echo ' alert("Incorrect Login details")'; 
+				echo '</script>';
+			}
+				
+		}
+
+	//free result from memory
+	mysqli_free_result($result);
+	//close connection
+	mysqli_close($conn);
 
 
 

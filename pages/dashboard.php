@@ -152,8 +152,8 @@
 					<div class = "container" id="teams">
 						
 						<div class = "container" id="allTeamsDiv">
-							<div class="row">
-								<div class="overflow-auto" style="margin-top:40px">
+						
+								<div class="container overflow-auto" style="margin-top:40px">
 									<div class="row">
 										<?php foreach ($colleges as $college){ ?>
 											
@@ -172,8 +172,7 @@
 										<?php } ?>
 									</div>
 								</div>
-
-							</div>
+							
 							<div class="footer">
 								<button type="button" id = "sendInviteButton">
 									sendInvite
@@ -238,7 +237,7 @@
 
 					<div id = "help" style="display:none;">
 
-						help
+						<?php include "./templates/help.php"; ?>
 
 					</div>
 				</div>
