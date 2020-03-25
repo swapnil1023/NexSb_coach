@@ -7,6 +7,20 @@
             echo "Connection failed". mysqli_connect_error();
     }
 
+    // $volTableTest = "SELECT * from volunteers";
+    // $TeamTableTest = "SELECT * from teamnexsb";
+    // $refereeTableTest = "SELECT * from studentnexsb WHEREreferees";
+    // $volResultTest = mysqli_query($conn, $volTableTest);
+    // $teamResultTest = mysqli_query($conn, $teamTableTest);
+    // $refereeResultTest = mysqli_query($conn, $refereeTableTest);
+    // $volunteersTest= mysqli_fetch_all($volResultTest,MYSQLI_ASSOC);
+    // $teamMembersTest= mysqli_fetch_all($teamResultTest,MYSQLI_ASSOC);
+    // $refereesTest= mysqli_fetch_all($refereeResultTest,MYSQLI_ASSOC);
+    // if(mysqli_num_rows($volunteersTest) == 0)
+    $conn->query("CREATE TABLE volunteer(id INT(11) NOT NULL AUTO_INCREMENT, name VARCHAR(255) NOT NULL, phone INT(11) NULL, email VARCHAR(255) NULL;");
+    $conn->query("CREATE TABLE referees(id INT(11) NOT NULL AUTO_INCREMENT, name VARCHAR(255) NOT NULL, game TEXT(255) NOT NULL, phone INT(11) NULL, email VARCHAR(255) NULL;");
+    $conn->query("CREATE TABLE teamnexsb(id INT(11) NOT NULL AUTO_INCREMENT, name VARCHAR(255) NOT NULL, phone INT(11) NULL, email VARCHAR(255) NULL;");
+
     $volTable = "SELECT * from volunteers";
     $TeamTable = "SELECT * from teamnexsb";
     $refereeTable = "SELECT * from referees";
